@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Storage Inspector - DevTools</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      min-width: 450px;
+    }
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .search-box {
+      flex-grow: 1;
+      padding: 5px;
+    }
+    .tab-buttons {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    .tab-button {
+      padding: 8px 15px;
+      background: #f1f1f1;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px 4px 0 0;
+      margin-right: 5px;
+    }
+    .tab-button.active {
+      background: #ddd;
+      font-weight: bold;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .storage-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .storage-table th {
+      text-align: left;
+      background: #f5f5f5;
+      padding: 8px;
+    }
+    .storage-table td {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+    .json-viewer {
+      max-height: 150px;
+      overflow-y: auto;
+      font-family: monospace;
+      white-space: pre;
+      background: #f8f8f8;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    .action-btn {
+      padding: 3px 6px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <input type="text" class="search-box" placeholder="Search storage...">
+    <select id="storage-type-select">
+      <option value="all">All Storage</option>
+      <option value="cookies">Cookies</option>
+      <option value="localStorage">Local Storage</option>
+      <option value="sessionStorage">Session Storage</option>
+      <option value="indexedDB">IndexedDB</option>
+      <option value="cache">Cache API</option>
+      <option value="serviceWorkers">Service Workers</option>
+    </select>
+    <button id="refresh-btn">Refresh</button>
+    <button id="export-btn">Export</button>
+  </div>
+
+  <div class="tab-buttons">
+    <button class="tab-button active" data-tab="storage">Storage</button>
+    <button class="tab-button" data-tab="service-workers">Service Workers</button>
+    <button class="tab-button" data-tab="cache">Cache</button>
+  </div>
+
+  <div id="storage-tab" class="tab-content active">
+    <table class="storage-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Key</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="storage-table-body">
+        <!-- Storage items will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="service-workers-tab" class="tab-content">
+    <table class="storage-table">
+      <thead>
+        <tr>
+          <th>URL</th>
+          <th>Status</th>
+          <th>Scope</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="sw-table-body">
+        <!-- Service workers will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="cache-tab" class="tab-content">
+    <table class="storage-table">
+      <thead>
+        <tr>
+          <th>Cache Name</th>
+          <th>URLs</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="cache-table-body">
+        <!-- Cache entries will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="devtools.js"></script>
+</body>
+</html>
