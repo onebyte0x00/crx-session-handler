@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Storage Inspector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Storage Inspector</h1>
+    
+    <div class="toolbar">
+      <input type="text" id="search-input" placeholder="Search storage...">
+      <select id="storage-type">
+        <option value="all">All Storage</option>
+        <option value="cookies">Cookies</option>
+        <option value="localStorage">Local Storage</option>
+        <option value="sessionStorage">Session Storage</option>
+      </select>
+      <button id="export-btn">Export</button>
+      <button id="import-btn">Import</button>
+      <input type="file" id="import-file" style="display: none;">
+    </div>
+    
+    <div class="storage-section">
+      <h2 id="section-title">Storage Items</h2>
+      <div id="storage-list"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
