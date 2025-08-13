@@ -1,0 +1,83 @@
+body {
+  width: 500px;
+  height: 600px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.toolbar input, .toolbar select, .toolbar button {
+  padding: 5px;
+  font-size: 12px;
+}
+
+#search-input {
+  flex-grow: 1;
+}
+
+.storage-section {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.storage-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.storage-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.storage-item-key {
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.storage-item-value {
+  word-break: break-all;
+  white-space: pre-wrap;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.storage-item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-mode {
+  background-color: #fffde7;
+}
+
+.json-viewer {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 5px;
+  background-color: white;
+  margin-top: 5px;
+}
